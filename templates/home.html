@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APD</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'welcome.css')}}">
+ 	<link rel="stylesheet" type="text/css" href="../static/welcome.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #719192;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffebbb;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background-color: #ffcab0;
+            color: #394a51;
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .form-wrapper {
+            margin-top: 20px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 500px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f7f6e7;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-wrapper input[type="file"] {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .image-info-container {
+            display: flex;
+            align-items: center; /* Align items vertically */
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f6eedf;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-info-container .image {
+            flex: 0 0 auto; /* Let the image size itself */
+            margin-right: 20px; /* Add some space between image and text */
+        }
+
+        .image-info-container .image img {
+            max-width: 100%;
+            height: auto; /* Preserve aspect ratio */
+            border-radius: 10px;
+        }
+
+        .image-info-container .info {
+            flex: 1; /* Take up remaining space */
+        }
+
+        .info h2 {
+            margin-top: 0;
+        }
+
+        .info p {
+            margin-bottom: 0;
+        }
+
+        .image-container {
+            display: flex; /* Use flexbox */
+            justify-content: space-between; /* Align items horizontally */
+            margin-top: 20px;
+            margin-left: 200px;
+            margin-right: 200px;
+            padding: 20px;
+            background-color: #feffea;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-container .image-wrapper {
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #feffea;
+        }
+
+        .image-container .image-wrapper h2 {
+            margin-top: 10px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>A Deep Learning Based Solution to Identify and Mask Polypoid from Colonoscopy Images</h1>
+        </div>
+    </div>
+    <div class="main">
+        <h1 class="name">Hi, {{name}}</h1><hr style="width: 30%">
+    </div>
+        <div class="image-info-container">
+            <div class="image">
+                <img src="../static/uploads/image-2_sketch.jpg" alt="Original Image">
+            </div>
+            <div class="info">
+                <h2>APD System</h2>
+                <p>An Automatic Polyp Detection (APD) system is a computer-based solution designed to automatically identify and detect colonic polyps in medical images, particularly those obtained during colonoscopy procedures.</p>
+                <p>The primary objective of an APD system is to assist healthcare professionals, such as gastroenterologists, in detecting polyps more efficiently and accurately during colorectal cancer screening.</p>
+            </div>
+        </div>
+        <div class="form-wrapper">
+            <form action="/sketch" method="POST" enctype="multipart/form-data">
+                <input type="file" id="file" name="file">
+                <button type="submit">Identify Polypoid</button>
+            </form>
+        </div>
+
+        {% if sketch_img_name %}
+        <div class="image-container">
+            <div class="image-wrapper">
+                <h2>Original Image</h2>
+                <img src="../static/uploads/{{ org_img_name }}" alt="Original Image">
+            </div>
+            <div class="image-wrapper">
+                <h2>Masked Image</h2>
+                <img src="../static/uploads/{{ sketch_img_name }}" alt="Masked Image">
+            </div>
+        </div>
+        {% endif %}
+    
+
+</body>
+
+</html>

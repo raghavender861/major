@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>APD</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'main.css') }}">
+  <style>
+    .container {
+            max-width: 100%;
+            margin: 20px;
+            padding: 10px;
+            background-color: #ffebbb;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #ffcab0;
+            color: #394a51;
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px 15px 0 0;
+        }
+
+  </style>
+</head>
+<body>
+<div class="wrapper fadeInDown">
+  <div class="container">
+    <div class="header">
+        <h1>A Deep Learning Based Solution to Identify and Mask Polypoid from Colonoscopy Images</h1>
+    </div>
+</div>
+<h1>Welcome </h1>
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <a href="/"><h2 class="inactive underlineHover"> Sign In </h2></a>
+    <h2 class="active">Sign Up </h2>
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="{{ url_for('static', filename = 'user.png') }}" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form action="http://127.0.0.1:5000/register" method="POST">
+      <input type="text" id="name" class="fadeIn second" name="name" placeholder="name">
+      <input type="email" id="login" class="fadeIn second" name="email" placeholder="email">
+      <input type="password" id="password" class="fadeIn third" name="pass" placeholder="password">
+      <input type="submit" class="fadeIn fourth" value="Sign Up">
+    </form>
+
+  </div>
+</div>
+</body>
+</html>
